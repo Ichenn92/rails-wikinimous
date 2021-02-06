@@ -1,0 +1,32 @@
+<h1>All articles</h1>
+
+<ul class="my-3 mx-0 p-0 list-group">
+  <% @articles.each do |article| %>
+
+    <div class="d-flex align-items-center">
+
+      <div class="flex-grow-1">
+        <%= link_to article_path(article) do %>
+            <li class="list-group-item list-group-item-action my-2">
+              <%= article.title %>
+            </li>
+        <% end %>
+      </div>
+      
+
+      <div class="icon my-2">
+        <%= link_to edit_article_path(article) do %>
+          <%= fa_icon "edit" %>
+        <% end %>
+      </div>
+      
+      <div class="icon my-2">
+        <%= link_to article_path(article), method: :delete, data: {confirm: "Are you sure?"} do %>
+          <%= fa_icon "trash" %>
+        <% end %>
+      </div>
+
+    </div>
+    
+  <% end %>
+</ul>
